@@ -335,7 +335,7 @@ struct ion_handle *ion_alloc(struct ion_client *client, size_t len,
 	 */
 	ion_buffer_put(buffer);
 
-	if (!IS_ERR_OR_NULL(handle)) {
+	if (!IS_ERR(handle)) {
 		mutex_lock(&client->lock);
 		ion_handle_add(client, handle);
 		mutex_unlock(&client->lock);
