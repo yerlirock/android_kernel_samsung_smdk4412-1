@@ -228,19 +228,6 @@ int ion_share_dma_buf(struct ion_client *client, struct ion_handle *handle);
 struct ion_handle *ion_import_dma_buf(struct ion_client *client, int fd);
 
 
-#ifdef CONFIG_ION_EXYNOS
-struct ion_handle *ion_exynos_get_user_pages(struct ion_client *client,
-			unsigned long uvaddr, size_t len, unsigned int flags);
-#else
-#include <linux/err.h>
-static inline struct ion_handle *ion_exynos_get_user_pages(
-				struct ion_client *client, unsigned long uvaddr,
-				size_t len, unsigned int flags)
-{
-	return ERR_PTR(-ENOSYS);
-}
-#endif
-
 #endif /* __KERNEL__ */
 
 /**
